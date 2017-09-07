@@ -169,14 +169,58 @@ Capybara.run_server = false
 #   end
 # end
 
-#A10
-describe "Fill out required fields, except Email, with valid data and check all checkboxes. Fill out Email field with abc. Select save user button.", :type => :feature do
+# #A10
+# describe "Fill out required fields, except Email, with valid data and check all checkboxes. Fill out Email field with abc. Select save user button.", :type => :feature do
+#   it "displays error message indicating Email field must be formatted as an email" do
+#     visit('/')
+#     fill_in 'user[first_name]', with: 'Tina'
+#     fill_in 'user[last_name]', with: 'Belcher'
+#     fill_in 'user[title]', with: 'Line Cook'
+#     fill_in 'user[email]', with: 'abc'
+#     fill_in 'user[phone_number]', with: '347-867-5309'
+#     fill_in 'user[business_name]', with: 'Bobs Burgers'
+#     fill_in 'user[address_1]', with: '568 Ocean Ave'
+#     fill_in 'user[city]', with: 'Rockaway Beach'
+#     select 'NY', from: 'user[state]'
+#     fill_in 'user[zip]', with: '11693'
+#     check 'user[agree_1]'
+#     check 'user[agree_2]'
+#     click_button 'Save User'
+#     expect(page).to have_content 'Email must be formatted as a valid email address'
+#     page.save_screenshot('A10.png')
+#   end
+# end
+#
+# #A11
+# describe "Fill out required fields, except Email, with valid data and check all checkboxes. Fill out Email field with a@bc. Select save user button.", :type => :feature do
+#   it "displays error message indicating Email field must be formatted as an email" do
+#     visit('/')
+#     fill_in 'user[first_name]', with: 'Tina'
+#     fill_in 'user[last_name]', with: 'Belcher'
+#     fill_in 'user[title]', with: 'Line Cook'
+#     fill_in 'user[email]', with: 'a@bc'
+#     fill_in 'user[phone_number]', with: '347-867-5309'
+#     fill_in 'user[business_name]', with: 'Bobs Burgers'
+#     fill_in 'user[address_1]', with: '568 Ocean Ave'
+#     fill_in 'user[city]', with: 'Rockaway Beach'
+#     select 'NY', from: 'user[state]'
+#     fill_in 'user[zip]', with: '11693'
+#     check 'user[agree_1]'
+#     check 'user[agree_2]'
+#     click_button 'Save User'
+#     expect(page).to have_content 'Email must be formatted as a valid email address'
+#     page.save_screenshot('A11.png')
+#   end
+# end
+
+#A12
+describe "Fill out required fields, except Email, with valid data and check all checkboxes. Fill out Email field with a@b.c. Select save user button.", :type => :feature do
   it "displays error message indicating Email field must be formatted as an email" do
     visit('/')
     fill_in 'user[first_name]', with: 'Tina'
     fill_in 'user[last_name]', with: 'Belcher'
     fill_in 'user[title]', with: 'Line Cook'
-    fill_in 'user[email]', with: 'abc'
+    fill_in 'user[email]', with: 'a@b.c'
     fill_in 'user[phone_number]', with: '347-867-5309'
     fill_in 'user[business_name]', with: 'Bobs Burgers'
     fill_in 'user[address_1]', with: '568 Ocean Ave'
@@ -186,7 +230,7 @@ describe "Fill out required fields, except Email, with valid data and check all 
     check 'user[agree_1]'
     check 'user[agree_2]'
     click_button 'Save User'
-    expect(page).to have_content 'Email must be formatted as a valid email address'
-    page.save_screenshot('A10.png')
+    expect(page).to have_content 'Success! You have signed up. Register a user.'
+    page.save_screenshot('A12.png')
   end
 end
