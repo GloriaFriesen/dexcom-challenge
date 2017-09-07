@@ -243,8 +243,30 @@ Capybara.run_server = false
 #   end
 # end
 
-#A14
-describe "Fill out required fields, except Zip, with valid data and check all checkboxes. Fill out Zip field with between 1 and 4 valid characters. Select save user button.", :type => :feature do
+# #A14
+# describe "Fill out required fields, except Zip, with valid data and check all checkboxes. Fill out Zip field with between 1 and 4 valid characters. Select save user button.", :type => :feature do
+#   it "displays error message indicating zip code must be between 5 and 20 characters" do
+#     visit('/')
+#     fill_in 'user[first_name]', with: 'Tina'
+#     fill_in 'user[last_name]', with: 'Belcher'
+#     fill_in 'user[title]', with: 'Line Cook'
+#     fill_in 'user[email]', with: 'a@b.c'
+#     fill_in 'user[phone_number]', with: '347-867-5309'
+#     fill_in 'user[business_name]', with: 'Bobs Burgers'
+#     fill_in 'user[address_1]', with: '568 Ocean Ave'
+#     fill_in 'user[city]', with: 'Rockaway Beach'
+#     select 'NY', from: 'user[state]'
+#     fill_in 'user[zip]', with: '123'
+#     check 'user[agree_1]'
+#     check 'user[agree_2]'
+#     click_button 'Save User'
+#     expect(page).to have_content 'Postal code must be between 5 and 20 characters'
+#     page.save_screenshot('A14.png')
+#   end
+# end
+
+#A15
+describe "Fill out required fields, except Zip, with valid data and check all checkboxes. Fill out Zip field with between 21 and 25 valid characters. Select save user button.", :type => :feature do
   it "displays error message indicating zip code must be between 5 and 20 characters" do
     visit('/')
     fill_in 'user[first_name]', with: 'Tina'
@@ -256,11 +278,11 @@ describe "Fill out required fields, except Zip, with valid data and check all ch
     fill_in 'user[address_1]', with: '568 Ocean Ave'
     fill_in 'user[city]', with: 'Rockaway Beach'
     select 'NY', from: 'user[state]'
-    fill_in 'user[zip]', with: '123'
+    fill_in 'user[zip]', with: 'thisisa24charlongzipcode'
     check 'user[agree_1]'
     check 'user[agree_2]'
     click_button 'Save User'
     expect(page).to have_content 'Postal code must be between 5 and 20 characters'
-    page.save_screenshot('A14.png')
+    page.save_screenshot('A15.png')
   end
 end
