@@ -18,7 +18,7 @@ Capybara.run_server = false
 #   it "displays error message indicating first name requires a value" do
 #     visit('/')
 #     fill_in 'user[last_name]', with: 'Belcher'
-#     fill_in 'user[title]', with: 'Line Cook'
+#     fill_in 'user[title]', with: 'Cook'
 #     fill_in 'user[email]', with: 'belchers@burgers.com'
 #     fill_in 'user[phone_number]', with: '347-867-5309'
 #     fill_in 'user[business_name]', with: 'Bobs Burgers'
@@ -39,7 +39,7 @@ Capybara.run_server = false
 #   it "only the first 15 characters are entered in first name field" do
 #     visit ('/')
 #     fill_in 'user[last_name]', with: 'Belcher'
-#     fill_in 'user[title]', with: 'Line Cook'
+#     fill_in 'user[title]', with: 'Cook'
 #     fill_in 'user[email]', with: 'belchers@burgers.com'
 #     fill_in 'user[phone_number]', with: '347-867-5309'
 #     fill_in 'user[business_name]', with: 'Bobs Burgers'
@@ -62,7 +62,7 @@ Capybara.run_server = false
 #     visit('/')
 #     fill_in 'user[first_name]', with: 'Tina'
 #     fill_in 'user[last_name]', with: 'Belcher'
-#     fill_in 'user[title]', with: 'Line Cook'
+#     fill_in 'user[title]', with: 'Cook'
 #     fill_in 'user[email]', with: 'belchers@burgers.com'
 #     fill_in 'user[phone_number]', with: '347-867-5309'
 #     fill_in 'user[business_name]', with: 'Bobs Burgers'
@@ -74,7 +74,7 @@ Capybara.run_server = false
 #     check 'user[agree_2]'
 #     expect(page).to have_field('user[first_name]', :with =>'Tina')
 #     expect(page).to have_field('user[last_name]', :with => 'Belcher')
-#     expect(page).to have_field('user[title]', :with => 'Line Cook')
+#     expect(page).to have_field('user[title]', :with => 'Cook')
 #     expect(page).to have_field('user[email]', :with => 'belchers@burgers.com')
 #     expect(page).to have_field('user[phone_number]', :with => '347-867-5309')
 #     expect(page).to have_field('user[business_name]', :with => 'Bobs Burgers')
@@ -93,7 +93,7 @@ Capybara.run_server = false
 #     visit('/')
 #     fill_in 'user[first_name]', with: 'Tina'
 #     fill_in 'user[last_name]', with: 'Belcher'
-#     fill_in 'user[title]', with: 'Line Cook'
+#     fill_in 'user[title]', with: 'Cook'
 #     fill_in 'user[email]', with: 'belchers@burgers.com'
 #     fill_in 'user[phone_number]', with: '347-867-5309'
 #     fill_in 'user[business_name]', with: 'Bobs Burgers'
@@ -116,14 +116,36 @@ Capybara.run_server = false
 #     expect(page).to have_content 'Register New User'
 #   end
 # end
+# 
+# #A07
+# describe "Fill out required fields, except Title, with valid data and check all checkboxes. In title field, enter a value containing letters and at least one number. Select save user button.", :type => :feature do
+#   it "displays error message indicating title field only accepts letters and spaces" do
+#     visit('/')
+#     fill_in 'user[first_name]', with: 'Tina'
+#     fill_in 'user[last_name]', with: 'Belcher'
+#     fill_in 'user[title]', with: 'Cook 123'
+#     fill_in 'user[email]', with: 'belchers@burgers.com'
+#     fill_in 'user[phone_number]', with: '347-867-5309'
+#     fill_in 'user[business_name]', with: 'Bobs Burgers'
+#     fill_in 'user[address_1]', with: '568 Ocean Ave'
+#     fill_in 'user[city]', with: 'Rockaway Beach'
+#     select 'NY', from: 'user[state]'
+#     fill_in 'user[zip]', with: '11693'
+#     check 'user[agree_1]'
+#     check 'user[agree_2]'
+#     click_button 'Save User'
+#     expect(page).to have_content 'Title can only contain letters and spaces'
+#     page.save_screenshot('A07.png')
+#   end
+# end
 
-#A07
-describe "Fill out required fields, except Title, with valid data and check all checkboxes. In title field, enter a value containing letters and at least one number. Select save user button.", :type => :feature do
-  it "displays error message indicating title field only accepts letters and spaces" do
+#A08
+describe "Fill out required fields, except Title, with valid data and check all checkboxes. In title field, enter a value containing letters and at least one space. Select save user button.", :type => :feature do
+  it "navigates to success page" do
     visit('/')
     fill_in 'user[first_name]', with: 'Tina'
     fill_in 'user[last_name]', with: 'Belcher'
-    fill_in 'user[title]', with: 'Line Cook 123'
+    fill_in 'user[title]', with: 'Line Cook'
     fill_in 'user[email]', with: 'belchers@burgers.com'
     fill_in 'user[phone_number]', with: '347-867-5309'
     fill_in 'user[business_name]', with: 'Bobs Burgers'
@@ -134,7 +156,7 @@ describe "Fill out required fields, except Title, with valid data and check all 
     check 'user[agree_1]'
     check 'user[agree_2]'
     click_button 'Save User'
-    expect(page).to have_content 'Title can only contain letters and spaces'
-    page.save_screenshot('A07.png')
+    expect(page).to have_content 'Success! You have signed up. Register a user.'
+    page.save_screenshot('A08.png')
   end
 end
