@@ -9,7 +9,7 @@ describe "Test case A01: navigate to the testing page", :type => :feature do
   it "Page to register a new user is displayed." do
     visit ('/')
     expect(page).to have_content 'Register New User'
-    page.save_screenshot('A01.png')
+    page.save_screenshot('screenshots/A01.png')
   end
 end
 
@@ -30,7 +30,7 @@ describe "Test case A02: fill out required fields except first name with valid d
     check 'user[agree_2]'
     click_button 'Save User'
     expect(page).to have_content 'First Name cannot be blank'
-    page.save_screenshot('A02.png')
+    page.save_screenshot('screenshots/A02.png')
   end
 end
 
@@ -52,7 +52,7 @@ describe "Test case A03: fill out all required fields with valid data and check 
     #enter word with 16 characters (Programmatically) in First Name field
     fill_in 'user[first_name]', with: 'Programmatically'
     expect(page).to have_field('user[first_name]', :with =>'Programmaticall')
-    page.save_screenshot('A03.png')
+    page.save_screenshot('screenshots/A03.png')
   end
 end
 
@@ -83,7 +83,7 @@ describe "Test case A04: fill out all required fields with valid data and check 
     expect(page).to have_field("user[state]", :with =>"NY")
     expect(page).to have_field('user[agree_1]', checked: true)
     expect(page).to have_field('user[agree_2]', checked: true)
-    page.save_screenshot('A04.png')
+    page.save_screenshot('screenshots/A04.png')
   end
 end
 
@@ -105,7 +105,7 @@ describe "Test case A05: select the save user button with required fields comple
     check 'user[agree_2]'
     click_button 'Save User'
     expect(page).to have_content 'Success! You have signed up. Register a user.'
-    page.save_screenshot('A05.png')
+    page.save_screenshot('screenshots/A05.png')
   end
 end
 
@@ -135,7 +135,7 @@ describe "Test case A07: fill out required fields, except Title, with valid data
     check 'user[agree_2]'
     click_button 'Save User'
     expect(page).to have_content 'Title can only contain letters and spaces'
-    page.save_screenshot('A07.png')
+    page.save_screenshot('screenshots/A07.png')
   end
 end
 
@@ -157,7 +157,7 @@ describe "Test case A08: fill out required fields, except Title, with valid data
     check 'user[agree_2]'
     click_button 'Save User'
     expect(page).to have_content 'Success! You have signed up. Register a user.'
-    page.save_screenshot('A08.png')
+    page.save_screenshot('screenshots/A08.png')
   end
 end
 
@@ -187,7 +187,7 @@ describe "Test case A10: fill out required fields, except Email, with valid data
     check 'user[agree_2]'
     click_button 'Save User'
     expect(page).to have_content 'Email must be formatted as a valid email address'
-    page.save_screenshot('A10.png')
+    page.save_screenshot('screenshots/A10.png')
   end
 end
 
@@ -209,7 +209,7 @@ describe "Test case A11: fill out required fields, except Email, with valid data
     check 'user[agree_2]'
     click_button 'Save User'
     expect(page).to have_content 'Email must be formatted as a valid email address'
-    page.save_screenshot('A11.png')
+    page.save_screenshot('screenshots/A11.png')
   end
 end
 
@@ -231,7 +231,7 @@ describe "Test case A12: fill out required fields, except Email, with valid data
     check 'user[agree_2]'
     click_button 'Save User'
     expect(page).to have_content 'Success! You have signed up. Register a user.'
-    page.save_screenshot('A12.png')
+    page.save_screenshot('screenshots/A12.png')
   end
 end
 
@@ -261,7 +261,7 @@ describe "Test case A14: fill out required fields, except Zip, with valid data a
     check 'user[agree_2]'
     click_button 'Save User'
     expect(page).to have_content 'Postal code must be between 5 and 20 characters'
-    page.save_screenshot('A14.png')
+    page.save_screenshot('screenshots/A14.png')
   end
 end
 
@@ -283,6 +283,6 @@ describe "Test case A15: fill out required fields, except Zip, with valid data a
     check 'user[agree_2]'
     click_button 'Save User'
     expect(page).to have_content 'Postal code must be between 5 and 20 characters'
-    page.save_screenshot('A15.png')
+    page.save_screenshot('screenshots/A15.png')
   end
 end
