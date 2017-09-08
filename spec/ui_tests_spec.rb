@@ -29,14 +29,16 @@ describe "Test case A02: fill out required fields except first name with valid d
     check 'user[agree_1]'
     check 'user[agree_2]'
     click_button 'Save User'
+    expect(page).to have_selector '#error_explanation'
     expect(page).to have_content 'First Name cannot be blank'
+    expect(page).not_to have_content 'Success! You have signed up. Register a user.'
     page.save_screenshot('screenshots/A02.png')
   end
 end
 
 # A03
-describe "Test case A03: fill out all required fields with valid data and check all checkboxes. Attempt to fill in the first name field with 16 valid characters", :type => :feature do
-  it "only the first 15 characters are entered in first name field" do
+describe "Test case A03: fill out all required fields with valid data and check all checkboxes. Attempt to fill in the first name field with 16 valid characters (Programmatically)", :type => :feature do
+  it "only the first 15 characters (Programmaticall) are entered in first name field" do
     visit ('/')
     fill_in 'user[last_name]', with: 'Belcher'
     fill_in 'user[title]', with: 'Cook'
@@ -52,6 +54,7 @@ describe "Test case A03: fill out all required fields with valid data and check 
     #enter word with 16 characters (Programmatically) in First Name field
     fill_in 'user[first_name]', with: 'Programmatically'
     expect(page).to have_field('user[first_name]', :with =>'Programmaticall')
+    expect(page).not_to have_field('user[first_name]', :with =>'Programmatically')
     page.save_screenshot('screenshots/A03.png')
   end
 end
@@ -105,6 +108,7 @@ describe "Test case A05: select the save user button with required fields comple
     check 'user[agree_2]'
     click_button 'Save User'
     expect(page).to have_content 'Success! You have signed up. Register a user.'
+    expect(page).not_to have_selector '#error_explanation'
     page.save_screenshot('screenshots/A05.png')
   end
 end
@@ -134,7 +138,9 @@ describe "Test case A07: fill out required fields, except Title, with valid data
     check 'user[agree_1]'
     check 'user[agree_2]'
     click_button 'Save User'
+    expect(page).to have_selector '#error_explanation'
     expect(page).to have_content 'Title can only contain letters and spaces'
+    expect(page).not_to have_content 'Success! You have signed up. Register a user.'
     page.save_screenshot('screenshots/A07.png')
   end
 end
@@ -157,6 +163,7 @@ describe "Test case A08: fill out required fields, except Title, with valid data
     check 'user[agree_2]'
     click_button 'Save User'
     expect(page).to have_content 'Success! You have signed up. Register a user.'
+    expect(page).not_to have_selector '#error_explanation'
     page.save_screenshot('screenshots/A08.png')
   end
 end
@@ -186,7 +193,9 @@ describe "Test case A10: fill out required fields, except Email, with valid data
     check 'user[agree_1]'
     check 'user[agree_2]'
     click_button 'Save User'
+    expect(page).to have_selector '#error_explanation'
     expect(page).to have_content 'Email must be formatted as a valid email address'
+    expect(page).not_to have_content 'Success! You have signed up. Register a user.'
     page.save_screenshot('screenshots/A10.png')
   end
 end
@@ -208,7 +217,9 @@ describe "Test case A11: fill out required fields, except Email, with valid data
     check 'user[agree_1]'
     check 'user[agree_2]'
     click_button 'Save User'
+    expect(page).to have_selector '#error_explanation'
     expect(page).to have_content 'Email must be formatted as a valid email address'
+    expect(page).not_to have_content 'Success! You have signed up. Register a user.'
     page.save_screenshot('screenshots/A11.png')
   end
 end
@@ -230,6 +241,7 @@ describe "Test case A12: fill out required fields, except Email, with valid data
     check 'user[agree_1]'
     check 'user[agree_2]'
     click_button 'Save User'
+    expect(page).not_to have_selector '#error_explanation'
     expect(page).to have_content 'Success! You have signed up. Register a user.'
     page.save_screenshot('screenshots/A12.png')
   end
@@ -260,6 +272,8 @@ describe "Test case A14: fill out required fields, except Zip, with valid data a
     check 'user[agree_1]'
     check 'user[agree_2]'
     click_button 'Save User'
+    expect(page).to have_selector '#error_explanation'
+    expect(page).not_to have_content 'Success! You have signed up. Register a user.'
     expect(page).to have_content 'Postal code must be between 5 and 20 characters'
     page.save_screenshot('screenshots/A14.png')
   end
@@ -282,6 +296,8 @@ describe "Test case A15: fill out required fields, except Zip, with valid data a
     check 'user[agree_1]'
     check 'user[agree_2]'
     click_button 'Save User'
+    expect(page).to have_selector '#error_explanation'
+    expect(page).not_to have_content 'Success! You have signed up. Register a user.'
     expect(page).to have_content 'Postal code must be between 5 and 20 characters'
     page.save_screenshot('screenshots/A15.png')
   end
