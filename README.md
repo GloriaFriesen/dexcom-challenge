@@ -2,13 +2,20 @@
 
 #### _By Gloria Friesen_
 
-### Current Version:
+#### Current Version:
 1.0 - 09.08.2017
 
 ### Description
 Front-end automation test code challenge for Dexcom. Duplicates "Register New User Test", running against  <https://shrouded-lowlands-66853.herokuapp.com/>
 
-## Installation/Setup
+### Notes on My Solution
+* I have the tests running in a Chrome browser. I needed a web driver to direct the tests toward a remote web application. Selenium defaulted to Firefox which had issues connecting to the heroku app. Switching the default driver to Selenium-Chrome and installing Chromedriver worked beautifully. Also, I love watching the tests run in the browser, it's both rewarding and magical.
+* I chose to use Capybara and rspec matchers, without Cucumber. I felt that Capybara allowed me to have clear description statements without having to pull in (and learn) Cucumber.
+* For clarity and to capture screenshots after each test step, I decided to write out each step as it's own test. When a test was failing, it was much easier to find the solution.
+* Several of the test cases were the same "Navigate to the Testing Page" (A01, A06, A09, A13), resulting in redundancy. I considered not having those steps as separate test cases, but I thought it was worth including to ensure the application could navigate between errors and successes accurately. I would rather have redundancies than holes in test coverage.
+* Most of the test cases include comprehensive test coverage. I test the expected outcome as well as the unexpected outcome. For example, if the expected outcome is navigating to the success page, I tested that the success page displayed and no error messages were displayed.
+
+### Installation/Setup
 
 #### Requirements
   * Ruby 2.0 or higher
@@ -21,7 +28,6 @@ Front-end automation test code challenge for Dexcom. Duplicates "Register New Us
     * I needed to install this directly. Otherwise, my bundler could not install Capybara, which depends on Nokogiri, which depends on xcode commandline tools for installation. From the documentation, most people should not need to install it explicitly.
     * But, if you run into issues when installing Capybara via the Gemfile, try installing xcode: `$xcode-select --install`
   * Chromedriver
-    * This will run the tests in a Chrome browser. I needed a web driver to direct the tests toward a remote website. Selenium defaulted to Firefox which had issues connecting to the heroku app. Switching the default driver to Selenium-Chrome and installing Chromedriver worked beautifully.
     * install: `$ brew install chromedriver`
     * if you don't have homebrew, install it with the command `$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 
@@ -51,16 +57,13 @@ Front-end automation test code challenge for Dexcom. Duplicates "Register New Us
 | A14 | Clear all fields. Fill out all required fields except for Zip with valid data and check all checkboxes. Fill out the Zip field with between 1 and 4 valid characters. Select the Save User button. | An error message displays indicating that the length of the zip code must be between 5 and 20 characters. | [A14.png](screenshots/A14.png) |
 | A15 | Clear all fields. Fill out all required fields except for Zip with valid data and check all checkboxes. Fill out the Zip field with between 21 and 25 valid characters. Select the Save User button. | An error message displays indicating that the length of the zip code must be between 5 and 20 characters. | [A15.png](screenshots/A15.png) |
 
-## Known Bugs
-None that I know of.
-
 ## Support and contact details
 Questions? Concerns? Suggestions? Reach out to me via github: <https://github.com/GloriaFriesen>.
 
 ## Technologies Used
 * _Ruby_
 * _Capybara_
-* _RSPEC_
+* _rspec_
 * _Selenium_
 
 ## License
